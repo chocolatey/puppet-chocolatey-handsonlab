@@ -1,4 +1,4 @@
-PuppetConf Chocolatey Hands On Lab
+Puppet Chocolatey Provider Hands On Lab
 ==================================
 
 ## Prerequisites
@@ -18,14 +18,25 @@ PuppetConf Chocolatey Hands On Lab
 
 ## Labs
 
-### Lab 1
+### Lab 1 (adapted from original slides)
+
+#### Exercise 1
 
  1. Open a command line and head into Lab1 directory.
  1. For VMWare: edit the VagrantFile to point to the second url for the vmware box instead of the virtualbox.
  1. Call `vagrant up`. For VMWare call `vagrant up --provider=vmware_fusion`.
  1. Wait for it. The first time down it is going to be copying around 2.38GB, so it could take a little while.
+    * Special Note: This box is provided for evaluation purposes only. It should not be used for any production purposes or outside of the lab in general.
  1. While you are waiting, take a tour of the code. In the VagrantFile notice we call the shell provisioner (vagrant has providers and provisioners, the latter being things that can take a box from a predefined state to an end state or goal). The box we are pulling down has nothing installed aside from what is required for vagrant to work.
  1. Notice the resources folder has some local packages in it.
  1. Notice the puppet/PuppetFile and the modules that it contains for Puppet.
  1. Open the puppet/manifests/site.pp in an editor. Don't edit it yet.
  1. Wait for vagrant up to finish...
+ 1. Once it has finished, on the host (not the box) type `vagrant ssh`.
+ 1. Now type `cd c:\chocolatey\lib`
+ 1. Type `dir`. Note that poshgit is installed.
+ 1. Type `exit`. This should bring you out of the box.
+
+#### Exercise 2
+
+ 1. 
