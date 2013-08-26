@@ -1,0 +1,1 @@
+﻿#Install-VirtualPackage '__NAME__.portable' '__NAME__.install'
