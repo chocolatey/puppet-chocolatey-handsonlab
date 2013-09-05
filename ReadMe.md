@@ -48,7 +48,7 @@ Puppet Chocolatey Provider Hands On Lab
 #### Exercise 2 - Add Packages
 
  1. In the site.pp file (puppet/manifests/site.pp), please add `putty` and `warmup` packages.
- 1. **Note:** You already have a good example in the `roundhouse` package.
+ 1. **Note:** You already have a good example in the `roundhouse` package. Warmup will not need a source as it is on one of the default sources.
  1. Run `vagrant provision`.
  1. On the guest box, note that these packages are installed.
 
