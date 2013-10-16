@@ -3,18 +3,21 @@ Puppet Chocolatey Provider Hands On Lab
 
 ## Prerequisites
 
- * [Vagrant 1.2.7](http://downloads.vagrantup.com/tags/v1.2.7) - I'm pretty sure you'll need the latest version (we tried 1.2.2 and it didn't work)
- * [VirtualBox 4.2.16](https://www.virtualbox.org/wiki/Downloads) or VMWare Fusion 5
+ * [Vagrant 1.3.5](http://downloads.vagrantup.com/tags/v1.3.5) - I'm pretty sure you'll need the latest version (we tried 1.2.2 and it didn't work) - This installation will likely require a system reboot
+ * [VirtualBox 4.2.18](https://www.virtualbox.org/wiki/Downloads) or VMWare Fusion 5
     * If you want to use VMWare Fusion you will also need the vagrant-vmware-fusion plugin for vagrant (which is not free). You also want the latest version (at least 0.8.5).
+    * **NOTE:** After the system reboot, if your machine fails to boot and gets stuck on the "spinning dots of doom", then you might want to check out the following [workaround](http://www.grumpydev.com/2013/06/19/windows-8-hyper-v-virtualbox-vagrant-and-hanging-on-boot/) 
  * Vagrant-Windows 1.2.0 - included here in SetupFiles directory
  * At least 20GB free on the host box.
 
 ## Setup
 
- 1. Install/upgrade Vagrant to 1.2.7.
- 1. Install/upgrade VirtualBox/VMWare to versions listed above.
+ 1. Install/upgrade Vagrant to 1.3.4.
+ 1. Install/upgrade VirtualBox/VMWare to the versions listed above.
  1. Install/upgrade required plugins for vagrant (if using VMWare you will need the non-free vagrant-vmware-fusion or equivalent).
- 1. Install/upgrade vagrant-windows vagrant plugin. Open terminal/command line, head to the directory where the plugin is `vagrant plugin install vagrant-windows-1.2.0.gem`
+ 1. Install/upgrade vagrant-windows vagrant plugin. Open terminal/command line, head to the directory where the plugin is and execute the following command:
+ 
+     `vagrant plugin install vagrant-windows-1.2.0.gem`
 
 ## Labs
 
@@ -24,15 +27,15 @@ Puppet Chocolatey Provider Hands On Lab
 
 #### Exercise 1 - Vagrant Provisioning/Familiarization
 
- 1. Open a command line and head into Lab1 directory.
- 1. For VMWare: edit the VagrantFile to point to the second url for the vmware box instead of the virtualbox.
+ 1. Open a command line and head into the Lab1 directory.
+ 1. For VMWare: edit the VagrantFile to point to the second URL for the VMWare box instead of the VirtualBox URL.
  1. Call `vagrant up`. For VMWare call `vagrant up --provider=vmware_fusion`.
  1. Wait for it. The first time down it is going to be copying around 2.38GB, so it could take a little while.
     * **Special Note:** This box is provided for **evaluation purposes only**. It should not be used for any production purposes or outside of the lab in general.
- 1. While you are waiting, take a tour of the code. In the VagrantFile notice we call the shell provisioner (vagrant has providers and provisioners, the latter being things that can take a box from a predefined state to an end state or goal). The box we are pulling down has nothing installed aside from what is required for vagrant to work.
- 1. We allow the shell provisioner (in shell/main.cmd) to install
+ 1. While you are waiting... take a tour of the code. In the VagrantFile notice we call the shell provisioner (Vagrant has providers and provisioners, the latter being things that can take a box from a predefined state to an end state or goal). The box we are pulling down has nothing installed aside from what is required for vagrant to work.
+ 1. We allow the shell provisioner (in shell/main.cmd) to install:
     * .NET Framework 4.0 (which takes some time)
-    * Chocolatey and the latest prerelease of Chocolatey (required for puppet provider to work properly)
+    * Chocolatey and the latest pre-release of Chocolatey (required for puppet provider to work properly)
     * Puppet 3.2.4
     * librarian-puppet to install/update required modules
  1. Notice the resources folder has some local packages in it.
@@ -43,7 +46,7 @@ Puppet Chocolatey Provider Hands On Lab
  1. Now type `cd c:\chocolatey\lib`
  1. Type `dir`. Note that `roundhouse` is installed.
  1. Type `exit`. This should bring you out of the box.
- 1. Type `vagrant reload`. This should restart the box (necesary step after installing .NET Framework). This may have issues, so you may need to type `vagrant halt` and wait for the box to finish, then `vagrant up --no-provision` to get rebooted.
+ 1. Type `vagrant reload`. This should restart the box (necessary step after installing .NET Framework). This may have issues, so you may need to type `vagrant halt` and wait for the box to finish, then `vagrant up --no-provision` to get rebooted.
 
 #### Exercise 2 - Add Packages
 
