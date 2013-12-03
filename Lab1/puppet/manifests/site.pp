@@ -1,5 +1,10 @@
- package {'roundhouse':
+package {'roundhouse':
   ensure => latest,
-  provider => 'chocolatey',
+  provider => chocolatey,
   source => 'c:\vagrant\resources\packages',
 }
+
+# package {'poshgit':
+#   ensure => latest,
+#   provider => chocolatey,
+# }
